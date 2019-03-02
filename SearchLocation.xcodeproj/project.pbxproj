@@ -14,6 +14,7 @@
 		13281911222AFC6E000D0DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13281910222AFC6E000D0DD2 /* Assets.xcassets */; };
 		13281914222AFC6E000D0DD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13281912222AFC6E000D0DD2 /* LaunchScreen.storyboard */; };
 		1328191F222AFC6E000D0DD2 /* SearchLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328191E222AFC6E000D0DD2 /* SearchLocationTests.swift */; };
+		1328192A222B02E2000D0DD2 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 13281929222B02E1000D0DD2 /* cities.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		1328191A222AFC6E000D0DD2 /* SearchLocationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchLocationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1328191E222AFC6E000D0DD2 /* SearchLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTests.swift; sourceTree = "<group>"; };
 		13281920222AFC6E000D0DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13281929222B02E1000D0DD2 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				13281906222AFC6C000D0DD2 /* AppDelegate.swift */,
+				1328192B222B02FA000D0DD2 /* CitiesJSONFile */,
 				13281908222AFC6C000D0DD2 /* ViewController.swift */,
 				1328190A222AFC6C000D0DD2 /* Main.storyboard */,
 				13281910222AFC6E000D0DD2 /* Assets.xcassets */,
@@ -97,6 +100,14 @@
 				13281920222AFC6E000D0DD2 /* Info.plist */,
 			);
 			path = SearchLocationTests;
+			sourceTree = "<group>";
+		};
+		1328192B222B02FA000D0DD2 /* CitiesJSONFile */ = {
+			isa = PBXGroup;
+			children = (
+				13281929222B02E1000D0DD2 /* cities.json */,
+			);
+			path = CitiesJSONFile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +191,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1328192A222B02E2000D0DD2 /* cities.json in Resources */,
 				13281914222AFC6E000D0DD2 /* LaunchScreen.storyboard in Resources */,
 				13281911222AFC6E000D0DD2 /* Assets.xcassets in Resources */,
 				1328190C222AFC6C000D0DD2 /* Main.storyboard in Resources */,
