@@ -18,6 +18,7 @@
 		13281930222B05EE000D0DD2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328192F222B05EE000D0DD2 /* Service.swift */; };
 		13281933222B0D47000D0DD2 /* SearchCitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13281932222B0D47000D0DD2 /* SearchCitiesVC.swift */; };
 		13281935222B0E45000D0DD2 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13281934222B0E45000D0DD2 /* MapDetailView.swift */; };
+		13281938222B297B000D0DD2 /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13281937222B297A000D0DD2 /* CityViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		1328192F222B05EE000D0DD2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		13281932222B0D47000D0DD2 /* SearchCitiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCitiesVC.swift; sourceTree = "<group>"; };
 		13281934222B0E45000D0DD2 /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
+		13281937222B297A000D0DD2 /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				13281906222AFC6C000D0DD2 /* AppDelegate.swift */,
 				1328192B222B02FA000D0DD2 /* CitiesJSONFile */,
+				13281939222B2980000D0DD2 /* ViewModel */,
 				1328192E222B03DA000D0DD2 /* Model */,
 				13281936222B0E57000D0DD2 /* Controllers */,
 				13281931222B05F4000D0DD2 /* Service */,
@@ -141,6 +144,14 @@
 				13281934222B0E45000D0DD2 /* MapDetailView.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		13281939222B2980000D0DD2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				13281937222B297A000D0DD2 /* CityViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +261,7 @@
 				13281933222B0D47000D0DD2 /* SearchCitiesVC.swift in Sources */,
 				1328192D222B03D1000D0DD2 /* City.swift in Sources */,
 				13281935222B0E45000D0DD2 /* MapDetailView.swift in Sources */,
+				13281938222B297B000D0DD2 /* CityViewModel.swift in Sources */,
 				13281907222AFC6C000D0DD2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

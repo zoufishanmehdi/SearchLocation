@@ -21,6 +21,16 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zcm-zS-ldg">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cityCell" rowHeight="68" id="JhI-eU-IYE">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JhI-eU-IYE" id="pEJ-vW-bZd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BNl-th-2oo">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
@@ -45,6 +55,7 @@
                     <navigationItem key="navigationItem" id="OSb-6Z-6ys"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="zvY-NW-Sm2" id="96k-k1-jAi"/>
+                        <outlet property="tableView" destination="Zcm-zS-ldg" id="qBD-o9-r28"/>
                         <segue destination="agZ-hQ-mHp" kind="show" id="4AO-B2-usG"/>
                     </connections>
                 </viewController>
