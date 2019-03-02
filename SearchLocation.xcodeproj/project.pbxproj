@@ -15,6 +15,8 @@
 		13281914222AFC6E000D0DD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13281912222AFC6E000D0DD2 /* LaunchScreen.storyboard */; };
 		1328191F222AFC6E000D0DD2 /* SearchLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328191E222AFC6E000D0DD2 /* SearchLocationTests.swift */; };
 		1328192A222B02E2000D0DD2 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 13281929222B02E1000D0DD2 /* cities.json */; };
+		1328192D222B03D1000D0DD2 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328192C222B03D1000D0DD2 /* City.swift */; };
+		13281930222B05EE000D0DD2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328192F222B05EE000D0DD2 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		1328191E222AFC6E000D0DD2 /* SearchLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTests.swift; sourceTree = "<group>"; };
 		13281920222AFC6E000D0DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13281929222B02E1000D0DD2 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		1328192C222B03D1000D0DD2 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		1328192F222B05EE000D0DD2 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +86,10 @@
 			isa = PBXGroup;
 			children = (
 				13281906222AFC6C000D0DD2 /* AppDelegate.swift */,
+				1328192E222B03DA000D0DD2 /* Model */,
 				1328192B222B02FA000D0DD2 /* CitiesJSONFile */,
 				13281908222AFC6C000D0DD2 /* ViewController.swift */,
+				13281931222B05F4000D0DD2 /* Service */,
 				1328190A222AFC6C000D0DD2 /* Main.storyboard */,
 				13281910222AFC6E000D0DD2 /* Assets.xcassets */,
 				13281912222AFC6E000D0DD2 /* LaunchScreen.storyboard */,
@@ -108,6 +114,22 @@
 				13281929222B02E1000D0DD2 /* cities.json */,
 			);
 			path = CitiesJSONFile;
+			sourceTree = "<group>";
+		};
+		1328192E222B03DA000D0DD2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1328192C222B03D1000D0DD2 /* City.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		13281931222B05F4000D0DD2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1328192F222B05EE000D0DD2 /* Service.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,6 +236,8 @@
 			files = (
 				13281909222AFC6C000D0DD2 /* ViewController.swift in Sources */,
 				1328190F222AFC6C000D0DD2 /* SearchLocation.xcdatamodeld in Sources */,
+				13281930222B05EE000D0DD2 /* Service.swift in Sources */,
+				1328192D222B03D1000D0DD2 /* City.swift in Sources */,
 				13281907222AFC6C000D0DD2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
