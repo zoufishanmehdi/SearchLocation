@@ -15,7 +15,7 @@ struct CityViewModel {
     
     init(city: City) {
         name = "\(city.name), \(city.country)"
-        latitude = city.coordinates.latitude
-        longitude = city.coordinates.longitude
+        latitude = city.coord.lat
+        longitude = city.coord.lon
     }
 }

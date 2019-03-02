@@ -11,11 +11,11 @@ import Foundation
 struct City: Decodable {
     let country: String
     let name: String
-    let id: Int
-    let coordinates: Coordinates
+    let _id: Int
+    let coord: Coordinates
 }
 
 struct Coordinates: Decodable {
-    let latitude: Double
-    let longitude: Double 
+    let lat: Double
+    let lon: Double 
 }

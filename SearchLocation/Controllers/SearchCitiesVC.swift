@@ -16,8 +16,9 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.title = "Search Locations"
+     
+        setupNavBar()
+        fetchData()
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -37,5 +38,25 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    
+    fileprivate func fetchData() {
+        Service.shared.fetchLocation { (cities, err) in
+            if let err = err {
+                print("Failed to fetch courses:", err)
+                return
+            }
+            
+            self.cityViewModels = cities?.map({return CityViewModel(city: $0)}) ?? []
+            print("\(self.cityViewModels[0].name)")
+            self.tableView.reloadData()
+        }
+    }
 
+    fileprivate func setupNavBar() {
+        navigationItem.title = "Search Locations"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.22, green:0.41, blue:0.76, alpha:1.0)
+        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
 }
