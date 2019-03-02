@@ -8,10 +8,13 @@
 
 import UIKit
 
-class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var cityViewModels = [CityViewModel]()
+    var filteredCities: [CityViewModel] = []
+    var searchActive: Bool = false
     let cellId = "cityCell"
 
     override func viewDidLoad() {
@@ -21,23 +24,51 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         fetchData()
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if searchActive {
+            return filteredCities.count
+        } else {
+            return cityViewModels.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        cell.textLabel!.text = "Alabama, US"
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        if searchActive {
+            cell.textLabel?.text = filteredCities[indexPath.row].fullString
+        } else {
+            cell.textLabel!.text = cityViewModels[indexPath.row].fullString
+        }
         return cell
     }
     
+   
+    
+    private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false
+        
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+        tableView.resignFirstResponder()
+        self.searchBar.showsCancelButton = false
+        tableView.reloadData()
+    }
+    
+   
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchActive = true
+        filteredCities = searchText.isEmpty ? cityViewModels : cityViewModels.filter { (city: CityViewModel) -> Bool in
+            return city.fullString.range(of: searchText, options: .caseInsensitive, range: city.fullString.range(of: city.cityName), locale: nil) != nil
+        }
+         self.tableView.reloadData()
+    }
     
     fileprivate func fetchData() {
         Service.shared.fetchLocation { (cities, err) in
@@ -46,8 +77,8 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 return
             }
             
-            self.cityViewModels = cities?.map({return CityViewModel(city: $0)}) ?? []
-            print("\(self.cityViewModels[0].name)")
+            self.cityViewModels = cities?.sorted { $0.name < $1.name }.map({return CityViewModel(city: $0)}) ?? []
+            print("\(self.cityViewModels[0].cityName)")
             self.tableView.reloadData()
         }
     }

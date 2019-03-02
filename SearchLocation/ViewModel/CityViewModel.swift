@@ -9,12 +9,16 @@
 import Foundation
 
 struct CityViewModel {
-    let name: String
+    let cityName: String
+    let countryName: String
+    let fullString: String
     let latitude: Double
     let longitude: Double
     
     init(city: City) {
-        name = "\(city.name), \(city.country)"
+        cityName = city.name
+        countryName = city.country
+        fullString = "\(city.name), \(city.country)"
         latitude = city.coord.lat
         longitude = city.coord.lon
     }
