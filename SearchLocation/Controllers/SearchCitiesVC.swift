@@ -15,7 +15,9 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     var cityViewModels = [CityViewModel]()
     var filteredCities: [CityViewModel] = []
     var searchActive: Bool = false
+    var selectedIndexPath: Int = 0
     let cellId = "cityCell"
+    let segueId = "mapDetailSeg"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +51,10 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndexPath = indexPath.row
+        self.performSegue(withIdentifier: segueId, sender: nil)
+    }
     
     private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchActive = false
@@ -89,5 +94,20 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor(red:0.22, green:0.41, blue:0.76, alpha:1.0)
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueId {
+            guard let mapDetailView = segue.destination as? MapDetailView else { return }
+            if searchActive {
+                if filteredCities.count > selectedIndexPath {
+                    mapDetailView.selectedCity = filteredCities[selectedIndexPath]
+                }
+            } else {
+                if cityViewModels.count > selectedIndexPath {
+                    mapDetailView.selectedCity = cityViewModels[selectedIndexPath]
+                }
+            }
+        }
     }
 }

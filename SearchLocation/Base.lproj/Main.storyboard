@@ -57,7 +57,7 @@
                         <outlet property="searchBar" destination="BNl-th-2oo" id="Y8f-0i-tF6"/>
                         <outlet property="searchDisplayController" destination="zvY-NW-Sm2" id="96k-k1-jAi"/>
                         <outlet property="tableView" destination="Zcm-zS-ldg" id="qBD-o9-r28"/>
-                        <segue destination="agZ-hQ-mHp" kind="show" id="4AO-B2-usG"/>
+                        <segue destination="agZ-hQ-mHp" kind="show" identifier="mapDetailSeg" id="4AO-B2-usG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
