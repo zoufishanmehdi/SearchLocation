@@ -43,6 +43,7 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        cell.selectionStyle = .none
         if searchActive {
             cell.textLabel?.text = filteredCities[indexPath.row].fullString
         } else {
@@ -101,11 +102,11 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             guard let mapDetailView = segue.destination as? MapDetailView else { return }
             if searchActive {
                 if filteredCities.count > selectedIndexPath {
-                    mapDetailView.selectedCity = filteredCities[selectedIndexPath]
+                    mapDetailView.selectedLocation = filteredCities[selectedIndexPath]
                 }
             } else {
                 if cityViewModels.count > selectedIndexPath {
-                    mapDetailView.selectedCity = cityViewModels[selectedIndexPath]
+                    mapDetailView.selectedLocation = cityViewModels[selectedIndexPath]
                 }
             }
         }
