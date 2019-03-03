@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class SearchCitiesVC: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -29,35 +29,7 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchBar.delegate = self
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-  
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchActive {
-            return filteredCities.count
-        } else {
-            return cityViewModels.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        cell.selectionStyle = .none
-        if searchActive {
-            cell.textLabel?.text = filteredCities[indexPath.row].fullString
-        } else {
-            cell.textLabel!.text = cityViewModels[indexPath.row].fullString
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndexPath = indexPath.row
-        self.performSegue(withIdentifier: segueId, sender: nil)
-    }
-    
-    private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchActive = false
         
         searchBar.text = nil
@@ -95,6 +67,38 @@ class SearchCitiesVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor(red:0.22, green:0.41, blue:0.76, alpha:1.0)
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+}
+
+
+extension SearchCitiesVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchActive {
+            return filteredCities.count
+        } else {
+            return cityViewModels.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        cell.selectionStyle = .none
+        if searchActive {
+            cell.textLabel?.text = filteredCities[indexPath.row].fullString
+        } else {
+            cell.textLabel!.text = cityViewModels[indexPath.row].fullString
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndexPath = indexPath.row
+        self.performSegue(withIdentifier: segueId, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

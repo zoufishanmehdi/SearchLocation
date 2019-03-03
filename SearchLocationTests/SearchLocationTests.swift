@@ -23,6 +23,22 @@ class SearchLocationTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func testSearchQuery() {
+        let searchCityVC = SearchCitiesVC()
+        searchCityVC.tableView = UITableView()
+        searchCityVC.searchBar = UISearchBar()
+        
+        var city1 = City(country: "US", name: "Alabama", _id: 4829764, coord: Coordinates(lat: 32.750408, lon: -86.750259))
+        var city2 = City(country: "US", name: "Falls County", _id: 4690103, coord: Coordinates(lat: 31.26684, lon: -96.933601))
+        var city3 = City(country: "US", name: "Cego", _id: 4679930, coord: Coordinates(lat: 31.24518, lon: -97.162498))
+  
+        searchCityVC.cityViewModels.append(CityViewModel(city: city1))
+        searchCityVC.cityViewModels.append(CityViewModel(city: city2))
+        searchCityVC.cityViewModels.append(CityViewModel(city: city3))
+        
+        XCTAssertTrue(searchCityVC.cityViewModels.count == 3)
+    }
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
