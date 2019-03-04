@@ -8,22 +8,30 @@
 
 import Foundation
 
-class Service: NSObject {
+enum Result<Value> {
+    case success(Value)
+    case failure(Error)
+}
+
+final class Service {
     static let shared = Service()
     
-    func fetchLocation(completion: @escaping ([City]?, Error?) -> ()) {
-    
-        guard let url = Bundle.main.url(forResource: "cities", withExtension: "json") else {
-            return
+    func fetchLocation(completion: @escaping (Result<[City]>) -> ()) {
+        guard
+            let url = Bundle.main.url(forResource: "cities", withExtension: "json"),
+            let data = try? Data(contentsOf: url) else {
+                fatalError("Unable to read cities json.")
         }
-        guard let data = try? Data(contentsOf: url) else { return }
+        
         do {
             let cities = try JSONDecoder().decode([City].self, from: data)
             DispatchQueue.main.async {
-                completion(cities, nil)
+                completion(.success(cities))
             }
-        } catch let jsonErr {
-            print("Failed to decode:", jsonErr)
+        } catch {
+            DispatchQueue.main.async {
+                completion(.failure(error))
+            }
         }
     }
 }

@@ -18,6 +18,8 @@ class SearchCitiesVC: UIViewController, UISearchBarDelegate {
     var selectedIndexPath: Int = 0
     let cellId = "cityCell"
     let segueId = "mapDetailSeg"
+    
+    var selectionHandler: ((CityViewModel) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,15 +51,23 @@ class SearchCitiesVC: UIViewController, UISearchBarDelegate {
     }
     
     fileprivate func fetchData() {
-        Service.shared.fetchLocation { (cities, err) in
-            if let err = err {
-                print("Failed to fetch courses:", err)
-                return
+        Service.shared.fetchLocation { result in
+            switch result {
+            case .success(let cities):
+                self.cityViewModels = cities
+                    .compactMap { CityViewModel(city: $0) }
+                    .sortedByCityThenCountryName()
+                
+                print("\(self.cityViewModels[0].cityName)")
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+
+            case .failure(let error):
+                // TODO: handle the error
+                print("Failed to fetch cities", error)
             }
-            
-            self.cityViewModels = cities?.sorted { $0.name < $1.name }.map({return CityViewModel(city: $0)}) ?? []
-            print("\(self.cityViewModels[0].cityName)")
-            self.tableView.reloadData()
         }
     }
 
@@ -67,6 +77,15 @@ class SearchCitiesVC: UIViewController, UISearchBarDelegate {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor(red:0.22, green:0.41, blue:0.76, alpha:1.0)
         navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+}
+
+extension UINavigationBar {
+    func styleWhite() {
+        prefersLargeTitles = true
+        isTranslucent = false
+        barTintColor = UIColor(red:0.22, green:0.41, blue:0.76, alpha:1.0)
+        largeTitleTextAttributes = [.foregroundColor: UIColor.white]
     }
 }
 
@@ -106,11 +125,11 @@ extension SearchCitiesVC: UITableViewDelegate, UITableViewDataSource {
             guard let mapDetailView = segue.destination as? MapDetailView else { return }
             if searchActive {
                 if filteredCities.count > selectedIndexPath {
-                    mapDetailView.selectedLocation = filteredCities[selectedIndexPath]
+                    mapDetailView.cityViewModel = filteredCities[selectedIndexPath]
                 }
             } else {
                 if cityViewModels.count > selectedIndexPath {
-                    mapDetailView.selectedLocation = cityViewModels[selectedIndexPath]
+                    mapDetailView.cityViewModel = cityViewModels[selectedIndexPath]
                 }
             }
         }

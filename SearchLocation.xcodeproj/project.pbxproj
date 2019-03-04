@@ -12,13 +12,13 @@
 		1328190F222AFC6C000D0DD2 /* SearchLocation.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1328190D222AFC6C000D0DD2 /* SearchLocation.xcdatamodeld */; };
 		13281911222AFC6E000D0DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13281910222AFC6E000D0DD2 /* Assets.xcassets */; };
 		13281914222AFC6E000D0DD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13281912222AFC6E000D0DD2 /* LaunchScreen.storyboard */; };
-		1328191F222AFC6E000D0DD2 /* SearchLocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328191E222AFC6E000D0DD2 /* SearchLocationTests.swift */; };
 		1328192A222B02E2000D0DD2 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 13281929222B02E1000D0DD2 /* cities.json */; };
 		1328192D222B03D1000D0DD2 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328192C222B03D1000D0DD2 /* City.swift */; };
 		13281930222B05EE000D0DD2 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328192F222B05EE000D0DD2 /* Service.swift */; };
 		13281933222B0D47000D0DD2 /* SearchCitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13281932222B0D47000D0DD2 /* SearchCitiesVC.swift */; };
 		13281935222B0E45000D0DD2 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13281934222B0E45000D0DD2 /* MapDetailView.swift */; };
 		13281938222B297B000D0DD2 /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13281937222B297A000D0DD2 /* CityViewModel.swift */; };
+		1329DC15222C6621006D3729 /* CityViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1329DC14222C6621006D3729 /* CityViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 		13281913222AFC6E000D0DD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13281915222AFC6E000D0DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1328191A222AFC6E000D0DD2 /* SearchLocationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchLocationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1328191E222AFC6E000D0DD2 /* SearchLocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTests.swift; sourceTree = "<group>"; };
 		13281920222AFC6E000D0DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13281929222B02E1000D0DD2 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		1328192C222B03D1000D0DD2 /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 		13281932222B0D47000D0DD2 /* SearchCitiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCitiesVC.swift; sourceTree = "<group>"; };
 		13281934222B0E45000D0DD2 /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
 		13281937222B297A000D0DD2 /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
+		1329DC14222C6621006D3729 /* CityViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +107,8 @@
 		1328191D222AFC6E000D0DD2 /* SearchLocationTests */ = {
 			isa = PBXGroup;
 			children = (
-				1328191E222AFC6E000D0DD2 /* SearchLocationTests.swift */,
 				13281920222AFC6E000D0DD2 /* Info.plist */,
+				1329DC14222C6621006D3729 /* CityViewModelTests.swift */,
 			);
 			path = SearchLocationTests;
 			sourceTree = "<group>";
@@ -270,7 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1328191F222AFC6E000D0DD2 /* SearchLocationTests.swift in Sources */,
+				1329DC15222C6621006D3729 /* CityViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

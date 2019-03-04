@@ -23,3 +23,11 @@ struct CityViewModel {
         longitude = city.coord.lon
     }
 }
+
+
+extension Array where Element == CityViewModel {
+    
+    func sortedByCityThenCountryName() -> [CityViewModel] {
+        return sorted { $0.cityName == $1.cityName ? $0.countryName < $1.countryName : $0.cityName < $1.cityName }
+    }
+}
