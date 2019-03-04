@@ -19,11 +19,6 @@ class CityViewModelTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
     func testInitialization() {
         let city = City(country: "US", name: "Alabama", _id: 4829764, coord: Coordinates(lat: 32.750408, lon: -86.750259))
         let cityViewModel = CityViewModel(city: city)
@@ -61,13 +56,4 @@ class CityViewModelTests: XCTestCase {
         
         XCTAssertTrue(sortedCityViewModels[0].cityName == "Cego")
     }
-        
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
-

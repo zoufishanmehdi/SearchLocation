@@ -19,3 +19,17 @@ extension UINavigationBar {
         largeTitleTextAttributes = [.foregroundColor: UIColor.white]
     }
 }
+
+extension UIViewController {
+    
+    static let defaultErrorTitle = "Oops"
+    
+    func showAlert(title: String? = nil, message: String? = nil, actions: [UIAlertAction]? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        actions?.forEach { alertController.addAction($0) }
+        if actions?.isEmpty ?? true {
+            alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        }
+        present(alertController, animated: true, completion: nil)
+}
+}

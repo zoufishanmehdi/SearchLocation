@@ -15,9 +15,7 @@ class SearchCitiesVC: UIViewController, UISearchBarDelegate {
     var cityViewModels = [CityViewModel]()
     var filteredCities: [CityViewModel] = []
     var searchActive: Bool = false
-    var selectedIndexPath: Int = 0
     let cellId = "cityCell"
-    let segueId = "mapDetailSeg"
     
     var selectionHandler: ((CityViewModel) -> Void)?
 
@@ -34,7 +32,7 @@ class SearchCitiesVC: UIViewController, UISearchBarDelegate {
         fetchData()
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
         
         searchBar.text = nil
@@ -80,12 +78,12 @@ extension SearchCitiesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchActive {
-            if filteredCities.count > selectedIndexPath {
+            if filteredCities.count > indexPath.row {
                 let mapDetailView =  MapDetailView(cityViewModel: filteredCities[indexPath.row])
                 navigationController?.pushViewController(mapDetailView, animated: true)
             }
         } else {
-            if cityViewModels.count > selectedIndexPath {
+            if cityViewModels.count > indexPath.row {
                 let mapDetailView =  MapDetailView(cityViewModel: cityViewModels[indexPath.row])
                 navigationController?.pushViewController(mapDetailView, animated: true)
             }
@@ -107,7 +105,7 @@ private extension SearchCitiesVC {
                 self.tableView.reloadData()
                 
             case .failure(let error):
-                // TODO: handle the error
+                self.showAlert(title: UIViewController.defaultErrorTitle, message: "Locations could not be fetched")
                 print("Failed to fetch cities", error)
             }
         }
