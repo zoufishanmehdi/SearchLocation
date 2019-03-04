@@ -44,9 +44,7 @@ class SearchCitiesVC: UIViewController, UISearchBarDelegate {
    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchActive = true
-        filteredCities = searchText.isEmpty ? cityViewModels : cityViewModels.filter { (city: CityViewModel) -> Bool in
-            return city.fullString.range(of: searchText, options: .caseInsensitive, range: city.fullString.range(of: city.cityName), locale: nil) != nil
-        }
+        filteredCities = searchText.isEmpty ? cityViewModels : cityViewModels.filterByCityThenCountryName(searchText: searchText)
          self.tableView.reloadData()
     }
     
