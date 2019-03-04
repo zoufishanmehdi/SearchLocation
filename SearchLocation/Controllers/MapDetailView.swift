@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class MapDetailView: UIViewController {
-    @IBOutlet weak var mapView: MKMapView!
+    var mapView = MKMapView()
     
     var cityViewModel: CityViewModel
     init(cityViewModel: CityViewModel) {
@@ -25,9 +25,21 @@ class MapDetailView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("selected city \(cityViewModel.fullString)")
-        setupNavBar()
+        navigationItem.title = "\(cityViewModel.cityName)"
+        self.navigationController?.navigationBar.styleNavigationBar()
+        
+        setupMap()
         showLocationCoords()
+    }
+    
+    func setupMap() {
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(mapView)
+        
+        mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        mapView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
     
     func showLocationCoords() {
@@ -41,14 +53,5 @@ class MapDetailView: UIViewController {
         annotation.coordinate = location
         annotation.title = cityViewModel.cityName
         mapView.addAnnotation(annotation)
-    }
-    
-    fileprivate func setupNavBar() {
-        navigationItem.title = "\(cityViewModel.cityName)"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = UIColor(red:0.22, green:0.41, blue:0.76, alpha:1.0)
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-       navigationController?.navigationBar.tintColor = .white
     }
 }

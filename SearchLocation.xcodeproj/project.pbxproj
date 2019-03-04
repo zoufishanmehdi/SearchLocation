@@ -19,6 +19,7 @@
 		13281935222B0E45000D0DD2 /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13281934222B0E45000D0DD2 /* MapDetailView.swift */; };
 		13281938222B297B000D0DD2 /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13281937222B297A000D0DD2 /* CityViewModel.swift */; };
 		1329DC15222C6621006D3729 /* CityViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1329DC14222C6621006D3729 /* CityViewModelTests.swift */; };
+		1329DC17222CD63F006D3729 /* UIViewController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1329DC16222CD63F006D3729 /* UIViewController+Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		13281934222B0E45000D0DD2 /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
 		13281937222B297A000D0DD2 /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		1329DC14222C6621006D3729 /* CityViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModelTests.swift; sourceTree = "<group>"; };
+		1329DC16222CD63F006D3729 /* UIViewController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				13281906222AFC6C000D0DD2 /* AppDelegate.swift */,
 				1328192B222B02FA000D0DD2 /* CitiesJSONFile */,
+				1329DC18222CD645006D3729 /* Extension */,
 				13281939222B2980000D0DD2 /* ViewModel */,
 				1328192E222B03DA000D0DD2 /* Model */,
 				13281936222B0E57000D0DD2 /* Controllers */,
@@ -152,6 +155,14 @@
 				13281937222B297A000D0DD2 /* CityViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1329DC18222CD645006D3729 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1329DC16222CD63F006D3729 /* UIViewController+Utilities.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +273,7 @@
 				1328192D222B03D1000D0DD2 /* City.swift in Sources */,
 				13281935222B0E45000D0DD2 /* MapDetailView.swift in Sources */,
 				13281938222B297B000D0DD2 /* CityViewModel.swift in Sources */,
+				1329DC17222CD63F006D3729 /* UIViewController+Utilities.swift in Sources */,
 				13281907222AFC6C000D0DD2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

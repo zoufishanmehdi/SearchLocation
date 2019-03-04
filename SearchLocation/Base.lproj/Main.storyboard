@@ -57,7 +57,6 @@
                         <outlet property="searchBar" destination="BNl-th-2oo" id="Y8f-0i-tF6"/>
                         <outlet property="searchDisplayController" destination="zvY-NW-Sm2" id="96k-k1-jAi"/>
                         <outlet property="tableView" destination="Zcm-zS-ldg" id="qBD-o9-r28"/>
-                        <segue destination="agZ-hQ-mHp" kind="show" identifier="mapDetailSeg" id="4AO-B2-usG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -72,35 +71,6 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1071.2" y="132.68365817091455"/>
-        </scene>
-        <!--Map Detail View-->
-        <scene sceneID="i3J-y4-C1D">
-            <objects>
-                <viewController id="agZ-hQ-mHp" customClass="MapDetailView" customModule="SearchLocation" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hFS-1C-yO5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sTD-XN-lJt">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="G5r-cT-AJi" firstAttribute="bottom" secondItem="sTD-XN-lJt" secondAttribute="bottom" id="Kj1-Kj-BI2"/>
-                            <constraint firstItem="sTD-XN-lJt" firstAttribute="leading" secondItem="G5r-cT-AJi" secondAttribute="leading" id="PJC-dX-nu2"/>
-                            <constraint firstItem="G5r-cT-AJi" firstAttribute="trailing" secondItem="sTD-XN-lJt" secondAttribute="trailing" id="RpO-sh-z6g"/>
-                            <constraint firstItem="sTD-XN-lJt" firstAttribute="top" secondItem="G5r-cT-AJi" secondAttribute="top" id="WrL-WF-X8R"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="G5r-cT-AJi"/>
-                    </view>
-                    <connections>
-                        <outlet property="mapView" destination="sTD-XN-lJt" id="pAX-aE-Cox"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="49D-xC-Psx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1798" y="133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lVC-jg-mBJ">

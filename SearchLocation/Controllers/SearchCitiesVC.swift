@@ -24,11 +24,14 @@ class SearchCitiesVC: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
      
-        setupNavBar()
-        fetchData()
+        navigationItem.title = "Search Locations"
+        navigationController?.navigationBar.styleNavigationBar()
+        
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        
+        fetchData()
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
@@ -44,46 +47,8 @@ class SearchCitiesVC: UIViewController, UISearchBarDelegate {
    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchActive = true
-        filteredCities = searchText.isEmpty ? cityViewModels : cityViewModels.filterByCityThenCountryName(searchText: searchText)
+        filteredCities = searchText.isEmpty ? cityViewModels : cityViewModels.filterByCity(searchText: searchText)
          self.tableView.reloadData()
-    }
-    
-    fileprivate func fetchData() {
-        Service.shared.fetchLocation { result in
-            switch result {
-            case .success(let cities):
-                self.cityViewModels = cities
-                    .compactMap { CityViewModel(city: $0) }
-                    .sortedByCityThenCountryName()
-                
-                print("\(self.cityViewModels[0].cityName)")
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-
-            case .failure(let error):
-                // TODO: handle the error
-                print("Failed to fetch cities", error)
-            }
-        }
-    }
-
-    fileprivate func setupNavBar() {
-        navigationItem.title = "Search Locations"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = UIColor(red:0.22, green:0.41, blue:0.76, alpha:1.0)
-        navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-    }
-}
-
-extension UINavigationBar {
-    func styleWhite() {
-        prefersLargeTitles = true
-        isTranslucent = false
-        barTintColor = UIColor(red:0.22, green:0.41, blue:0.76, alpha:1.0)
-        largeTitleTextAttributes = [.foregroundColor: UIColor.white]
     }
 }
 
@@ -114,21 +79,36 @@ extension SearchCitiesVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndexPath = indexPath.row
-        self.performSegue(withIdentifier: segueId, sender: nil)
+        if searchActive {
+            if filteredCities.count > selectedIndexPath {
+                let mapDetailView =  MapDetailView(cityViewModel: filteredCities[indexPath.row])
+                navigationController?.pushViewController(mapDetailView, animated: true)
+            }
+        } else {
+            if cityViewModels.count > selectedIndexPath {
+                let mapDetailView =  MapDetailView(cityViewModel: cityViewModels[indexPath.row])
+                navigationController?.pushViewController(mapDetailView, animated: true)
+            }
+        }
     }
+}
+
+
+private extension SearchCitiesVC {
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueId {
-            guard let mapDetailView = segue.destination as? MapDetailView else { return }
-            if searchActive {
-                if filteredCities.count > selectedIndexPath {
-                    mapDetailView.cityViewModel = filteredCities[selectedIndexPath]
-                }
-            } else {
-                if cityViewModels.count > selectedIndexPath {
-                    mapDetailView.cityViewModel = cityViewModels[selectedIndexPath]
-                }
+    func fetchData() {
+        Service.shared.fetchLocation { result in
+            switch result {
+            case .success(let cities):
+                self.cityViewModels = cities
+                    .compactMap { CityViewModel(city: $0) }
+                    .sortedByCityThenCountryName()
+                
+                self.tableView.reloadData()
+                
+            case .failure(let error):
+                // TODO: handle the error
+                print("Failed to fetch cities", error)
             }
         }
     }

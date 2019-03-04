@@ -31,7 +31,7 @@ extension Array where Element == CityViewModel {
         return sorted { $0.cityName == $1.cityName ? $0.countryName < $1.countryName : $0.cityName < $1.cityName }
     }
     
-    func filterByCityThenCountryName(searchText: String) -> [CityViewModel] {
+    func filterByCity(searchText: String) -> [CityViewModel] {
         return filter({ (city: CityViewModel) -> Bool in
             city.fullString.range(of: searchText, options: .caseInsensitive, range: city.fullString.range(of: city.cityName), locale: nil) != nil
         })
