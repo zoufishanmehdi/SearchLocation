@@ -16,8 +16,6 @@ class SearchCitiesVC: UIViewController, UISearchBarDelegate {
     var filteredCities: [CityViewModel] = []
     var searchActive: Bool = false
     let cellId = "cityCell"
-    
-    var selectionHandler: ((CityViewModel) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
